@@ -1,0 +1,23 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "PassAsset",
+    "ClassData": {
+        "PassTemplate": {
+            "Name": "WDSSSApplyPassTemplate",
+            "PassClass": "WDSSSApplyPass",
+            "Slots": [
+                {
+                    "Name": "ShadowMask",
+                    "SlotType": "Input",
+                    "ScopeAttachmentUsage": "Shader"
+                },
+                {
+                    "Name": "FullscreenShadow",
+                    "SlotType": "InputOutput",
+                    "ScopeAttachmentUsage": "Shader"
+                }
+            ]
+        }
+    }
+}

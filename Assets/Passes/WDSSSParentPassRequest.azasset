@@ -1,0 +1,19 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "PassRequest",
+    "ClassData": {
+        "Name": "WDSSSPass",
+        "TemplateName": "WDSSSParentPassTemplate",
+        "Enabled": true,
+        "Connections": [
+            {
+                "LocalSlot": "PipelineOutput",
+                "AttachmentRef": {
+                    "Pass": "PipelineGlobal",
+                    "Attachment": "PipelineOutput"
+                }
+            }
+        ]
+    }
+}

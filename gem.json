@@ -1,0 +1,35 @@
+{
+    "gem_name": "WDScreenSpaceShadows",
+    "display_name": "WD Screen Space Shadows (Bend)",
+    "license": "Apache-2.0 OR MIT",
+    "license_url": "https://github.com/o3de/o3de/blob/development/LICENSE.txt",
+    "origin": "WD Studios",
+    "origin_url": "https://git.wdstudios.tech/internal/engine",
+    "type": "Code",
+    "summary": "Bend Studio's wavefront screen-space contact shadows for Atom: a compute pass ray-marches the scene depth buffer toward the sun to produce a screen-space shadow mask, optionally combined into the directional-light visibility so the sun is darkened with no lighting-shader edits. Ports Bend Studio's Apache-2.0 reference implementation (Graham Aldridge). No hardware ray tracing required.",
+    "canonical_tags": [
+        "Gem"
+    ],
+    "user_tags": [
+        "Renderer",
+        "Graphics",
+        "Lighting",
+        "Shadows"
+    ],
+    "requirements": "Requires an Atom pipeline exposing a scene depth buffer and a directional light. To darken the sun, the pipeline must expose the FullscreenShadowBuffer pipeline-global (desktop default).",
+    "documentation_url": "",
+    "dependencies": [
+        "Atom_RPI",
+        "Atom",
+        "Atom_Feature_Common",
+        "ImGui"
+    ],
+    "repo_uri": "",
+    "version": "1.0.0",
+    "compatible_engines": [
+        "o3de>=2.0.0"
+    ],
+    "engine_api_dependencies": [
+        "Atom"
+    ]
+}

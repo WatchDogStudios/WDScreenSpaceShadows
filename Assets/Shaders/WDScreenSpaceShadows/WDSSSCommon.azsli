@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) Contributors to the Open 3D Engine Project.
+ * For complete copyright and license terms please see the LICENSE at the root of this distribution.
+ *
+ * SPDX-License-Identifier: Apache-2.0 OR MIT
+ *
+ * Shared SRG + depth helper for the Bend screen-space-shadows compute pass. The depth source is Atom's
+ * resolved non-MSAA, non-linear hardware depth (the "Depth" pipeline-global = MSAAResolveDepthPass output),
+ * read as a plain Texture2D. This keeps the algorithm in the projected (non-linear) depth space Bend
+ * expects AND samples at pixel centres - the raw DepthMSAA's sample-0 sub-pixel offset caused large depth
+ * errors on grazing surfaces (false-shadowing flat floors). Works for MSAA and non-MSAA pipelines alike.
+ */
+
+#pragma once
+
+#include <Atom/Features/SrgSemantics.azsli>
+
+ShaderResourceGroup PassSrg : SRG_PerPass
+{
+    Texture2D<float>   m_depth;          // resolved non-MSAA non-linear hardware depth (the "Depth" global)
+    RWTexture2D<float>  m_outputTexture;  // R8 screen-space shadow mask (1 = lit, 0 = shadowed)
+
+    // Per-dispatch constants (uploaded by name from AZ::Render::PerDispatchConstants).
+    float4 m_lightCoordinate;
+    int2   m_waveOffset;
+    float2 m_invDepthTextureSize;
+    float  m_surfaceThickness;
+    float  m_bilinearThreshold;
+    float  m_shadowContrast;
+    float2 m_depthBounds;
+    float  m_farDepthValue;
+    float  m_nearDepthValue;
+    int    m_flags;                       // bit0 IgnoreEdgePixels, bit1 UsePrecisionOffset, bit2 BilinearSamplingOffsetMode
+}
+
+// Bend samples depth through a point / clamp-to-border sampler. We Load() the resolved depth at pixel
+// centres and emulate clamp-to-border: anything outside the texture returns the far depth value (so
+// off-screen ray steps never cast a spurious shadow).
+float WDSSS_SampleDepth(float2 uv)
+{
+    uint texWidth, texHeight;
+    PassSrg::m_depth.GetDimensions(texWidth, texHeight);
+
+    int2 pixel = (int2)(uv / PassSrg::m_invDepthTextureSize);
+    if (pixel.x < 0 || pixel.y < 0 || pixel.x >= (int)texWidth || pixel.y >= (int)texHeight)
+    {
+        return PassSrg::m_farDepthValue;
+    }
+    return PassSrg::m_depth.Load(int3(pixel, 0)).r;
+}

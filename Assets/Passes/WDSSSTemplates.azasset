@@ -1,0 +1,25 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "AssetAliasesSourceData",
+    "ClassData": {
+        "AssetPaths": [
+            {
+                "Name": "WDSSSComputePassTemplate",
+                "Path": "Passes/WDSSSCompute.pass"
+            },
+            {
+                "Name": "WDSSSDebugPassTemplate",
+                "Path": "Passes/WDSSSDebug.pass"
+            },
+            {
+                "Name": "WDSSSApplyPassTemplate",
+                "Path": "Passes/WDSSSApply.pass"
+            },
+            {
+                "Name": "WDSSSParentPassTemplate",
+                "Path": "Passes/WDSSSParent.pass"
+            }
+        ]
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "PassAsset",
+    "ClassData": {
+        "PassTemplate": {
+            "Name": "WDSSSParentPassTemplate",
+            "PassClass": "ParentPass",
+            "Slots": [
+                {
+                    "Name": "PipelineOutput",
+                    "SlotType": "InputOutput"
+                }
+            ],
+            "PassRequests": [
+                {
+                    "Name": "WDSSSComputePass",
+                    "TemplateName": "WDSSSComputePassTemplate",
+                    "Connections": [
+                        {
+                            "LocalSlot": "Depth",
+                            "AttachmentRef": {
+                                "Pass": "PipelineGlobal",
+                                "Attachment": "Depth"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "Name": "WDSSSApplyPass",
+                    "TemplateName": "WDSSSApplyPassTemplate",
+                    "Connections": [
+                        {
+                            "LocalSlot": "ShadowMask",
+                            "AttachmentRef": {
+                                "Pass": "WDSSSComputePass",
+                                "Attachment": "ShadowMask"
+                            }
+                        },
+                        {
+                            "LocalSlot": "FullscreenShadow",
+                            "AttachmentRef": {
+                                "Pass": "PipelineGlobal",
+                                "Attachment": "FullscreenShadowBuffer"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

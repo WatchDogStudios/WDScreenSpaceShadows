@@ -1,0 +1,26 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "PassRequest",
+    "ClassData": {
+        "Name": "WDSSSDebugPass",
+        "TemplateName": "WDSSSDebugPassTemplate",
+        "Enabled": true,
+        "Connections": [
+            {
+                "LocalSlot": "ShadowMask",
+                "AttachmentRef": {
+                    "Pass": "PipelineGlobal",
+                    "Attachment": "WDSSSMask"
+                }
+            },
+            {
+                "LocalSlot": "Output",
+                "AttachmentRef": {
+                    "Pass": "UIPass",
+                    "Attachment": "InputOutput"
+                }
+            }
+        ]
+    }
+}

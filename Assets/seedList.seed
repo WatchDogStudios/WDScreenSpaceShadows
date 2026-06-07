@@ -1,0 +1,77 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "AZStd::vector<SeedInfo, allocator>",
+    "ClassData": [
+        {
+            "assetId": {
+                "guid": "{2556087C-995E-5930-97F6-3A82277E8F46}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdsssapply.pass"
+        },
+        {
+            "assetId": {
+                "guid": "{2E7147D0-274A-5217-AD5A-0F498175224B}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdssscompute.pass"
+        },
+        {
+            "assetId": {
+                "guid": "{8A680F56-2D3F-5C3D-9B30-D50B92FB1F80}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdsssdebug.pass"
+        },
+        {
+            "assetId": {
+                "guid": "{1AFFCA28-CD60-57D8-AB68-931FB77FE6D4}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdsssdebugpassrequest.azasset"
+        },
+        {
+            "assetId": {
+                "guid": "{8491AB8F-99A8-5381-AA2B-BEAF3319C4B7}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdsssparent.pass"
+        },
+        {
+            "assetId": {
+                "guid": "{A5AD281E-CE53-5536-A559-1711D113DA8F}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdsssparentpassrequest.azasset"
+        },
+        {
+            "assetId": {
+                "guid": "{5C097A0B-BBC7-5BAB-90DF-DAFA44485F40}"
+            },
+            "platformFlags": 255,
+            "pathHint": "passes/wdssstemplates.azasset"
+        },
+        {
+            "assetId": {
+                "guid": "{1078E881-A270-5BD4-A9B1-5D396CC7C759}"
+            },
+            "platformFlags": 255,
+            "pathHint": "shaders/wdscreenspaceshadows/wdsssapply.azshader"
+        },
+        {
+            "assetId": {
+                "guid": "{BB03C7BC-7EFA-5D1A-A969-67816754FFFD}"
+            },
+            "platformFlags": 255,
+            "pathHint": "shaders/wdscreenspaceshadows/wdssscompute.azshader"
+        },
+        {
+            "assetId": {
+                "guid": "{4AA2C282-4E98-51EB-9B01-E2487D4E7BB9}"
+            },
+            "platformFlags": 255,
+            "pathHint": "shaders/wdscreenspaceshadows/wdsssdebug.azshader"
+        }
+    ]
+}

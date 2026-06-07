@@ -1,0 +1,59 @@
+{
+    "Type": "JsonSerialization",
+    "Version": 1,
+    "ClassName": "PassAsset",
+    "ClassData": {
+        "PassTemplate": {
+            "Name": "WDSSSComputePassTemplate",
+            "PassClass": "WDSSSComputePass",
+            "Slots": [
+                {
+                    "Name": "Depth",
+                    "SlotType": "Input",
+                    "ScopeAttachmentUsage": "Shader",
+                    "ImageViewDesc": {
+                        "AspectFlags": [ "Depth" ]
+                    }
+                },
+                {
+                    "Name": "ShadowMask",
+                    "SlotType": "Output",
+                    "ScopeAttachmentUsage": "Shader"
+                }
+            ],
+            "ImageAttachments": [
+                {
+                    "Name": "ShadowMaskAttachment",
+                    "SizeSource": {
+                        "Source": {
+                            "Pass": "Parent",
+                            "Attachment": "PipelineOutput"
+                        }
+                    },
+                    "ImageDescriptor": {
+                        "Format": "R8_UNORM",
+                        "SharedQueueMask": "Graphics"
+                    }
+                }
+            ],
+            "PassData": {
+                "$type": "PassData",
+                "PipelineGlobalConnections": [
+                    {
+                        "GlobalName": "WDSSSMask",
+                        "Slot": "ShadowMask"
+                    }
+                ]
+            },
+            "Connections": [
+                {
+                    "LocalSlot": "ShadowMask",
+                    "AttachmentRef": {
+                        "Pass": "This",
+                        "Attachment": "ShadowMaskAttachment"
+                    }
+                }
+            ]
+        }
+    }
+}
